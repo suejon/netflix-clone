@@ -33,18 +33,26 @@ describe("Input", () => {
     const input = screen.getByLabelText("Email");
     expect(input).toHaveAttribute("type", "email");
   });
+  it("should call onChange", () => {
+    const onChange = jest.fn();
+    render(
+      <Input
+        id="email"
+        label="Email"
+        onChange={onChange}
+        value=""
+        type="email"
+      />
+    );
+    const input = screen.getByLabelText("Email");
+
+    // react overrides the input value setter. So we need to use the native input value setter
+    var nativeInputValueSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, "value").set;
+    nativeInputValueSetter.call(input, 'some value');
+
+    input.dispatchEvent(new Event("input", { bubbles: true }));
+    expect(onChange).toHaveBeenCalled();
+  })
 });
-//   it("should call onChange", () => {
-//     const onChange = jest.fn();
-//     render(
-//       <Input
-//         id="email"
-//         label="Email"
-//         onChange={onChange}
-//         value=""
-//         type="email"
-//       />
-//     );
-//     const input = screen.getByLabelText("Email");
 
 

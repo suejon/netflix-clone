@@ -1,7 +1,8 @@
-import * as React from "react"
+/* eslint-disable react/prop-types */
 import { VariantProps, cva } from "class-variance-authority"
+import * as React from "react"
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/libs/utils"
 
 const alertVariants = cva(
   "relative w-full rounded-lg border p-4 [&>svg]:absolute [&>svg]:text-foreground [&>svg]:left-4 [&>svg]:top-4 [&>svg+div]:translate-y-[-3px] [&:has(svg)]:pl-11",
@@ -56,4 +57,5 @@ const AlertDescription = React.forwardRef<
 ))
 AlertDescription.displayName = "AlertDescription"
 
-export { Alert, AlertTitle, AlertDescription }
+export { Alert, AlertDescription, AlertTitle }
+

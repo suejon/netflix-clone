@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import Input from "@/components/input";
 import axios from 'axios';
 import { useCallback, useState } from "react";
@@ -6,7 +6,7 @@ import { useCallback, useState } from "react";
 import { FaGithub } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
 
-import { getSession, signIn } from 'next-auth/react'
+import { signIn } from 'next-auth/react';
 
 const Auth = () => {
 
@@ -59,21 +59,21 @@ const Auth = () => {
                             {variant == "register" && (
                                 <Input
                                     label="Username"
-                                    onChange={event => setName(event.target.value)}
+                                    onChange={(event: React.ChangeEvent<any>)   => setName(event.target.value)}
                                     id="name"
                                     value={name}
                                 />
                             )}
                             <Input
                                 label="Email"
-                                onChange={event => setEmail(event.target.value)}
+                                onChange={(event: React.ChangeEvent<any>) => setEmail(event.target.value)}
                                 id="email"
                                 type="email"
                                 value={email}
                             />
                             <Input
                                 label="Password"
-                                onChange={event => setPassword(event.target.value)}
+                                onChange={(event: React.ChangeEvent<any>)  => setPassword(event.target.value)}
                                 id="password"
                                 type="password"
                                 value={password}

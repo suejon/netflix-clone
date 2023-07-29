@@ -1,7 +1,8 @@
-import React, { useCallback, useState } from 'react'
+import React from 'react'
+import { BellIcon, ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/react/24/outline';
+import { useCallback, useState } from 'react';
 import MobileMenu from "./MobileMenu";
 import NavBarItem from "./NavbarItem";
-import { BellIcon, MagnifyingGlassIcon, ChevronDownIcon } from '@heroicons/react/24/outline';
 
 const Navbar = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false)
@@ -9,7 +10,7 @@ const Navbar = () => {
 
   const toggleMobileMenu = useCallback(() => {
     setShowMobileMenu(current => !current)
-  })
+  }, [])
 
   return (
     <div className="w-full fixed z-40">

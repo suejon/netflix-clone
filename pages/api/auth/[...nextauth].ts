@@ -2,7 +2,7 @@ import NextAuth from 'next-auth'
 import Credentials from 'next-auth/providers/credentials'
 
 import prismadb from '@/libs/prismadb'
-import {compare} from 'bcrypt'
+import { compare } from 'bcrypt'
 
 import GithubProvider from 'next-auth/providers/github'
 import GoogleProvider from 'next-auth/providers/google'
@@ -33,7 +33,7 @@ export default NextAuth({
         }
       },
       async authorize(credentials) {
-        if (credentials?.email || credentials?.password) {
+        if (!credentials || credentials?.email || credentials?.password) {
           throw new Error('Email and password required')
         }
         const user = await prismadb.user.findUnique({
